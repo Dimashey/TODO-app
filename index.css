@@ -4,10 +4,6 @@ body {
     background-position: center center;
 }
 
-.wrapper {
-    content: "";
-}
-
 .list__body-item {
     display: flex;
     list-style: none;
@@ -25,7 +21,7 @@ body {
 
 .checkbox {
     height: 20px;
-    width: 20px;
+    width: 15px;
 }
 
 .checkbox__done {
