@@ -1,5 +1,6 @@
 const url = 'https://jsonplaceholder.typicode.com/todos';
-let myList = document.querySelector(".list__body");
+let doc = document;
+let myList = doc.querySelector(".list__body");
 fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -16,9 +17,9 @@ fetch(url)
         }
         let arrTask = [...current, ...done];
         arrTask.map(item => {
-                let listItem = document.createElement('li');
-                let checkBoxItem = document.createElement('div');
-                let titleItem = document.createElement('span');
+                let listItem = doc.createElement('li'),
+                    checkBoxItem = doc.createElement('div'),
+                    titleItem = doc.createElement('span');
                 titleItem.classList.add('title');
                 checkBoxItem.classList.add('checkbox');
                 listItem.classList.add('list__body-item');
@@ -31,9 +32,7 @@ fetch(url)
                 }
                 checkBoxItem.addEventListener('click', function() {
                     this.classList.toggle('checkbox__done');
-                    if(checkBoxItem.classList.contains('checkbox__done')) {
-                        insertAfter(checkBoxItem.parentNode, myList.lastChild);
-                    }
+                    this.classList.contains('checkbox__done') ? insertAfter(checkBoxItem.parentNode, myList.lastChild) : myList.insertBefore(listItem, myList.firstChild);
                 })  
         })
     })
